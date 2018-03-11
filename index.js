@@ -1,6 +1,6 @@
 var playMode = "hard";
 var colors = [];
-var numColor;
+var numColor = 6;
 var correctColor;
 var colorDisplay = document.getElementById("colorDisplay");
 var arrSquare = document.querySelectorAll(".square");
@@ -13,6 +13,8 @@ var header = document.querySelector(".header");
 
 var backgroundColor = "#272f3a";
 var headerColor = "#f42e38";
+
+playGame();
 
 // generate a random color, ex: RGB(231, 144, 5);
 function randomColor() {
@@ -71,10 +73,11 @@ function playGame() {
   setupModeButtons();
   // generate new array color
   colors = generateRandomColor(numColor);
-  correctColor = colors[Math.floor(Math.random() * (- 1))];
+  correctColor = colors[Math.floor(Math.random() * (numColor- 1))];
   colorDisplay.textContent = correctColor;
 
   for (var i = 0; i < numColor; i++) {
+    console.log(colors[i]);
     arrSquare[i].style.background = colors[i];
     arrSquare[i].addEventListener("click", function () {
       if (this.style.background == correctColor) {
@@ -87,7 +90,4 @@ function playGame() {
     });
   }
 }
-
-playGame();
-
 
