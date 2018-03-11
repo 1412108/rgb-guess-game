@@ -16,12 +16,6 @@ function randomColor() {
   return resultColor;
 }
 
-function initArrayColor() {
-  for (var i = 0; i < 6; i++) {
-    colors[i] = randomColor();
-  }
-}
-
 function generateRandomColor(num) {
   var arrColor = [];
   for (var i = 0; i < num; i++) {
@@ -71,6 +65,7 @@ newColorBtn.addEventListener("click", function() {
 })
 
 function resetGame() {
+  // set square invisiable
   for (var i = 0; i < arrSquare.length; i++) {
     arrSquare[i].style.background = backgroundColor;
   };
