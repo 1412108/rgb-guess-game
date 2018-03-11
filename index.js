@@ -1,10 +1,18 @@
-function isCorrect(colorClicked) {
-  if (colorClicked == correctColor) {
-    return true;
-  } else {
-    return false;
-  }
-}
+var playMode = "hard";
+var colors = [];
+var numColor;
+var correctColor;
+var colorDisplay = document.getElementById("colorDisplay");
+var arrSquare = document.querySelectorAll(".square");
+
+var modeBtn = document.querySelectorAll('.modeBtn');
+var newColorBtn = document.querySelector("#newColorBtn");
+
+var message = document.querySelector("#message");
+var header = document.querySelector(".header");
+
+var backgroundColor = "#272f3a";
+var headerColor = "#f42e38";
 
 // generate a random color, ex: RGB(231, 144, 5);
 function randomColor() {
@@ -16,6 +24,7 @@ function randomColor() {
   return resultColor;
 }
 
+// generate an array random color with num length
 function generateRandomColor(num) {
   var arrColor = [];
   for (var i = 0; i < num; i++) {
@@ -24,45 +33,25 @@ function generateRandomColor(num) {
   return arrColor;
 }
 
+// change all color when win
 function changeAllColor(color) {
-  for (var i = 0; i < colorNum; i++) {
+  for (var i = 0; i < numColor; i++) {
     arrSquare[i].style.background = color;
   }
   header.style.background = color;
 }
 
-var playMode = "hard";
-var colors = [];
-var colorNum;
-var correctColor;
-var colorDisplay = document.getElementById("colorDisplay");
-var arrSquare = document.querySelectorAll(".square");
-
-var message = document.querySelector("#message");
-var header = document.querySelector(".header");
-
-var backgroundColor = "#272f3a";
-var headerColor = "#f42e38";
-
-var easyBtn = document.querySelector("#easyBtn");
-var hardBtn = document.querySelector("#hardBtn");
-var newColorBtn = document.querySelector("#newColorBtn");
-
-easyBtn.addEventListener("click", function () {
-  easyBtn.classList.add("selected");
-  hardBtn.classList.remove("selected");
-  playMode = "easy";
-  playGame();
-});
-hardBtn.addEventListener("click", function () {
-  hardBtn.classList.add("selected");
-  easyBtn.classList.remove("selected");
-  playMode = "hard";
-  playGame();
-})
-newColorBtn.addEventListener("click", function() {
-  playGame();
-})
+function setupModeButtons() {
+  for (var i = 0; i < modeBtn.length; i++) {
+    modeBtn[i].addEventListener('click', function () {
+      modeBtn[0].classList.remove('selected');
+      modeBtn[1].classList.remove('selected');
+      this.classList.add('selected');
+      this.textContent === "Easy" ? numColor = 3 : numColor = 6;
+      playGame();
+    })
+  }
+}
 
 function resetGame() {
   // set square invisiable
@@ -75,19 +64,20 @@ function resetGame() {
 
 function playGame() {
   resetGame();
-  colorNum = 6; // hard mode
-  if (playMode == "easy") {
-    colorNum = 3;
-  }
-  colors = generateRandomColor(colorNum);
-  correctColor = colors[Math.floor(Math.random() * (colorNum - 1))];
-  console.log(correctColor);
+
+  newColorBtn.addEventListener("click", function () {
+    playGame();
+  })
+  setupModeButtons();
+  // generate new array color
+  colors = generateRandomColor(numColor);
+  correctColor = colors[Math.floor(Math.random() * (- 1))];
   colorDisplay.textContent = correctColor;
 
-  for (var i = 0; i < colorNum; i++) {
+  for (var i = 0; i < numColor; i++) {
     arrSquare[i].style.background = colors[i];
     arrSquare[i].addEventListener("click", function () {
-      if (isCorrect(this.style.background) == true) {
+      if (this.style.background == correctColor) {
         message.textContent = "Correct"
         changeAllColor(correctColor);
       } else {
