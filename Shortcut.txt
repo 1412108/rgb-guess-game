@@ -1,0 +1,17 @@
+Ctrl + Shift + [ 
+Collapse the current section code
+
+Ctrl + K + 0 (zero, men) 
+Fold all, everthing
+
+Ctrl + K + J
+Unfold all
+
+Ctrl + F2
+Change all occurrences (refactor)
+
+Ctrl + D
+Reformat code (manual in shortcut reference)
+
+Alt + arrow (up|down)
+Move line

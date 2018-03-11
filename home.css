@@ -1,0 +1,85 @@
+body {
+  background: #272f3a;
+  margin: 0;
+  font-family: 'Rammetto One', cursive;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.square {
+  width: 30%;
+  /* background: black; */
+  float: left;
+  padding-bottom: 30%;
+  margin: 10px;
+  border-radius: 10%;
+  transition: background 0.3s;
+}
+
+
+.header {
+  color: white;
+  background: #f42e38;
+  text-align: center;
+  padding-bottom: 10px;
+  margin: 0;
+}
+
+.header #colorDisplay {
+  font-size: 2em;
+  /* color: yellow; */
+  text-transform: uppercase;
+  /* font-weight: bold; */
+}
+
+.header #gameTitle {
+  font-weight: normal;
+  padding-top: 10px;
+}
+
+.header p, h1{
+  margin: 0;
+  line-height: 1.5;
+}
+
+.function {
+  background: white;
+  text-align: center;
+  height: 30px;
+  /* font-weight: bold; */
+}
+
+.function p {
+  color: #f42e38;
+  display: inline;
+}
+
+.function #message {
+  display: inline-block;
+  width: 20%;
+  margin: 0;
+}
+
+.selected {
+  background: red;
+  color: yellow;
+}
+
+button {
+  font-weight: bold;
+  border: none;
+  background: none;
+  text-transform: uppercase;
+  height: 100%;
+  outline: none;
+  transition: all 0.3s;
+  /* padding: 0; */
+}
+
+button:hover {
+  background: tomato;
+  color: white;
+}
