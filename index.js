@@ -73,7 +73,7 @@ function playGame() {
   setupModeButtons();
   // generate new array color
   colors = generateRandomColor(numColor);
-  correctColor = colors[Math.floor(Math.random() * (numColor- 1))];
+  correctColor = colors[Math.floor(Math.random() * (numColor - 1))];
   colorDisplay.textContent = correctColor;
 
   for (var i = 0; i < numColor; i++) {
